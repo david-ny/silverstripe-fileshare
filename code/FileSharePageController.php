@@ -83,7 +83,7 @@ class FileSharePageController extends ContentController
     protected function init() {
         parent::init();
         Requirements::css("devcreative/fileshare:client/dist/styles/style.css");
-        Requirements::javascript('devcreative/fileshare:client/dist/bundle.js')
+        Requirements::javascript('devcreative/fileshare:client/dist/bundle.js');
     }
 
     protected function badRequest() {
