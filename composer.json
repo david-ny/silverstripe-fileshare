@@ -1,7 +1,7 @@
 {
     "name": "devcreative/fileshare",
     "description": "File sharing service. A Silverstripe based server with a RESTful API and ReactJS client",
-    type": "silverstripe-vendormodule",
+    "type": "silverstripe-vendormodule",
     "keywords": ["silverstripe", "file", "share", "API", "ReactJS"],
 	"license": "BSD-3-Clause",
     "authors": [
