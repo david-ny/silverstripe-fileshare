@@ -1,0 +1,102 @@
+// @import "settings";
+// @import "../node_modules/bootstrap/scss/bootstrap";
+@import "colors";
+
+
+
+@mixin image-align($side: 'left', $d:50, $m:50) {
+
+    img.image-#{$side}-d#{$d}-m#{$m} {
+        float: #{$side};
+        @if $side == 'left' {
+            margin: 0.5% 2% 0.5% 0%;
+        } @else {
+            margin: 0.5% 0% 0.5% 2%;
+        }
+        width: $d * 1%;
+        height:auto;
+        @media (max-width: 767px) {
+        // @include media-breakpoint-down(sm) {
+            width: $m * 1%;
+        }
+    }
+    p.image-#{$side}-d#{$d}-m#{$m},
+    a.image-#{$side}-d#{$d}-m#{$m},
+    span.image-#{$side}-d#{$d}-m#{$m} {
+        img {
+            float: #{$side};
+            @if $side == 'left' {
+                margin: 0.5% 2% 0.5% 0%;
+            } @else {
+                margin: 0.5% 0% 0.5% 2%;
+            }
+            width: $d * 1%;
+            height:auto;
+            @media (max-width: 767px) {
+            // @include media-breakpoint-down(sm) {
+                width: $m * 1%;
+            }
+        }
+    }
+}
+
+
+@include image-align('left', 50, 30);
+@include image-align('left', 50, 100);
+
+@include image-align('right', 50, 30);
+@include image-align('right', 50, 100);
+
+
+img.image-left {
+    float:left;
+    margin: 0.5% 1% 0.5% 0%;
+}
+p.image-left,
+a.image-left,
+span.image-left {
+    img {
+        float:left;
+        margin: 0.5% 2% 0.5% 0%;
+    }
+}
+
+
+
+img.image-right {
+    float:left;
+    margin: 0.5% 0% 0.5% 2%;
+}
+p.image-right,
+a.image-right,
+span.image-right {
+    img {
+        float:left;
+        margin: 0.5% 0% 0.5% 1%;
+    }
+}
+
+
+
+img.image-full-width {
+    width: 100%!important;
+    max-width:100%;
+    height:auto;
+    margin: 0.5% 0% 0.5% 0%;
+}
+p.image-full-width,
+a.image-full-width,
+span.image-full-width {
+    img {
+        width: 100%!important;
+        max-width:100%;
+        height:auto;
+        margin: 0.5% 0% 0.5% 0%;
+    }
+}
+
+.caption {
+    font-weight: bold;
+    font-size: 0.8em;
+    // color: $color_red_zugf;
+}

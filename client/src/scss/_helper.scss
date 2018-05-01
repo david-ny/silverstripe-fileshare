@@ -1,0 +1,384 @@
+//Functions
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+// Bootstrap 4
+//
+//    Original:
+//
+//     $grid-breakpoints: (
+//         xs: 0,// Extra small screen / phone
+//         sm: 544px, // Small screen /m screen / tablet phone
+//         md: 768px, // Medium screen / tablet
+//         lg: 992px, // Large screen / desktop
+//         xl: 1200px // Extra large screen / wide desktop
+//     ) !default;
+//
+//
+//     $container-max-widths: (
+//         sm: 576px,
+//         md: 720px,
+//         lg: 940px,
+//         xl: 1140px
+//     ) !default;
+//
+//
+//     .visible-*-block  .visible-*-inline  .visible-*-inline-block
+
+// $grid-breakpoints: (
+//     xs: 0,// Extra small screen / phone
+//     xs1: 400px,
+//     xs2: 500px,
+//     sm: 544px, // Small screen /m screen / tablet phone
+//     md: 768px, // Medium screen / tablet
+//     lg: 992px, // Large screen / desktop
+//     xl: 1200px // Extra large screen / wide desktop
+// ) !default;
+
+$col-width: 100% / $grid-columns; //8.333333333% for 12 columns
+
+@mixin set-relative-column-width($ratio) {
+    $cw: ($col-width * $ratio);
+    flex: 0 0 $cw;
+    max-width: $cw;
+}
+
+
+// @mixin set-absolute-width($ratio) {
+//     $cw: ($col-width * $ratio);
+//     flex: 0 0 $cw;
+//     max-width: $cw;
+// }
+
+//Fine breakpoints
+$grid-breakpoints-fine-xs: (
+    xs0: 0,
+    xs1: 350px,
+    xs2: 400px,
+    xs3: 500px
+) !default;
+
+
+
+@mixin respond-to($bp, $case, $breakpoints: $grid-breakpoints) {
+
+   @if $case == up {
+
+        @include media-breakpoint-up($bp, $breakpoints) {
+
+            @content;
+        }
+
+    }
+
+    @else if $case == down {
+
+        @include media-breakpoint-down($bp, $breakpoints) {
+
+            @content;
+        }
+
+    } @else if $case == only {
+
+        @include media-breakpoint-only($bp, $breakpoints) {
+
+            @content;
+        }
+    }
+
+}
+
+
+@mixin relative-to($prop, $ratio, $array) {
+
+    @each $bp, $value in $array {
+
+        @include media-breakpoint-up($bp) {
+
+            @if $value == 0 {
+
+                $a : nth($array, 2);
+
+                #{$prop}: nth($a, 2) * $ratio  ;
+
+            } @else {
+
+                #{$prop}: ( $value * $ratio ) ;
+            }
+        }
+
+    }
+
+}
+
+@mixin relative-to-breakpoints($prop, $ratio, $breakpoints:$grid-breakpoints) {
+
+    @include relative-to($prop, $ratio, $grid-breakpoints)
+
+}
+
+//@mixin respond-to($bp-lower, $bp-upper) {
+//
+//        @include media-breakpoint-between($bp-lower, $bp-upper, $grid-breakpoints) {
+//
+//            @content;
+//        }
+//}
+
+
+
+/// Remove the unit of a length
+/// @param {Number} $number - Number to remove unit from
+/// @return {Number} - Unitless number
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+
+
+
+//Vertical align
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/*.element p {
+  @include vertical-align;
+}*/
+
+/* Placeholder selector */
+%vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+/*.element p {
+  @extend %vertical-align;
+}*/
+
+//different method - untested
+@mixin vertical-center-content-parent($element, $offset) {
+    /* use display:inline-block; vertical-align:middle; for child element*/
+    #{$element}:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: $offset; //-0.25em; /* Adjusts for spacing */
+    }
+}
+@mixin vertical-center-content-child {
+    display:inline-block;
+    vertical-align:middle;
+}
+/*
+after parent:
+@include vertical-center-content-parent('div p', -0.25);
+in child:
+@include vertical-center-content-child
+*/
+.vertical-center-content:before {
+    /* use display:inline-block; vertical-align:middle; for child element*/
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    margin-right: -0.25em; /* Adjusts for spacing */
+}
+
+
+//Mixins
+    //transform general
+    @mixin transform($transforms) {
+        -moz-transform: $transforms;
+        -o-transform: $transforms;
+        -ms-transform: $transforms;
+        -webkit-transform: $transforms;
+        transform: $transforms;
+    }
+
+
+
+    //animation
+    @mixin keyframes($animation-name) {
+      @-webkit-keyframes $animation-name {
+        @content;
+      }
+      @-moz-keyframes $animation-name {
+        @content;
+      }
+      @-ms-keyframes $animation-name {
+        @content;
+      }
+      @-o-keyframes $animation-name {
+        @content;
+      }
+      @keyframes $animation-name {
+        @content;
+      }
+    }
+    @mixin animation($str) {
+      -webkit-animation: #{$str};
+      -moz-animation: #{$str};
+      -ms-animation: #{$str};
+      -o-animation: #{$str};
+      animation: #{$str};
+    }
+
+    @mixin border-radius($radius) {
+      -webkit-border-radius: $radius;
+      border-radius: $radius;
+      background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+    }
+
+    @mixin right-side-border($width, $color) {
+
+        padding: $width 0 $width 0;
+        $white_transp : rgba(255,255,255,0);
+
+        border-right: #{$width} solid #{$color};
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        background-position: 0 0, 0 100% ;
+        background-repeat: no-repeat;
+        -webkit-background-size: 100% #{$width};
+        -moz-background-size: 100% #{$width};
+        background-size: 100% #{$width};
+        //background-image: url(#{$image});
+        background-image: -webkit-linear-gradient(left,  $white_transp 0%, $color 100%), -webkit-linear-gradient(left,  $white_transp 0%, $color 100%);
+        background-image: -moz-linear-gradient(left,  $white_transp 0%, $color 100%), -moz-linear-gradient(left,  $white_transp 0%, $color 100%);
+        background-image: -o-linear-gradient(left, $white_transp 0%, $color 100%), -o-linear-gradient(left,  $white_transp 0%, $color 100%);
+        background-image: linear-gradient(to right,  $white_transp 0%, $color 100%), linear-gradient(to right,  $white_transp 0%, $color 100%);
+    }
+
+    @mixin left-border($width, $color) {
+
+        //padding-left: $width;
+        $white_transp : rgba(255,255,255,0);
+
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        background-position: 0 0, 100% 0;
+        background-repeat: no-repeat;
+        -webkit-background-size:#{$width} 100%;
+        -moz-background-size: #{$width} 100%;
+        background-size: #{$width} 100%;
+        background-image: -webkit-linear-gradient(top, $white_transp 0%, $color 35%, $color 65%, $white_transp 100%);
+        background-image: -moz-linear-gradient(top, $white_transp 0%, $color 35%, $color 65%, $white_transp 100%);
+        background-image: -o-linear-gradient(top, $white_transp 0%, $color 35%, $color 65%, $white_transp 100%);
+        background-image: linear-gradient(to bottom, $white_transp 0%, $color 35%, $color 65%, $white_transp 100%);
+    }
+    @mixin right-border($width, $color) {
+
+        $white_transp : rgba(255,255,255,0);
+
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        background-position: 0 0, 100% 0;
+        background-repeat: no-repeat;
+        -webkit-background-size:#{$width} 100%;
+        -moz-background-size: #{$width} 100%;
+        background-size: #{$width} 100%;
+        background-image: none, -webkit-linear-gradient(top, $white_transp 0%, $color 35%, $color 65%, $white_transp 100%);
+        background-image: none, -moz-linear-gradient(top, $white_transp 0%, $color 35%, $color 65%, $white_transp 100%);
+        background-image: none, -o-linear-gradient(top, $white_transp 0%, $color 35%, $color 65%, $white_transp 100%);
+        background-image: none, linear-gradient(to bottom, $white_transp 0%, $color 35%, $color 65%, $white_transp 100%);
+    }
+    @mixin bottom-border($width, $color) {
+
+        $white_transp : rgba(255,255,255,0);
+
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        background-position: 0 0, 0 100% ;
+        background-repeat: no-repeat;
+        -webkit-background-size: 100% #{$width};
+        -moz-background-size: 100% #{$width};
+        background-size: 100% #{$width};
+
+        background-image: none, -webkit-linear-gradient(left,  $white_transp 0%, $color 35%, $color 65%, $white_transp 100%);
+        background-image: none, -moz-linear-gradient(left, $white_transp 0%, $color 35%, $color 65%, $white_transp 100%);
+        background-image: none, -o-linear-gradient(left,  $white_transp 0%, $color 35%, $color 65%, $white_transp 100%);
+        background-image: none, linear-gradient(to right,  $white_transp 0%, $color 35%, $color 65%, $white_transp 100%);
+    }
+
+
+//keyframes
+
+    //rotate 360
+    @include keyframes(rotate360) {
+      from { @include transform(rotate(0deg)); }
+      to { @include transform(rotate(360deg)); }
+    }
+
+
+
+//Debug
+//$debug-display: block / none;
+$debug-display: none;
+
+.debug {
+
+    display:$debug-display;
+    position:fixed;
+    left:25%;
+    color:black;
+    padding:10px;
+    font-weight:bold;
+
+    &.a {
+        top:60%;
+        background:rgba(90,255,0,0.7);
+        z-index:1000;;
+    }
+
+    &.b {
+        top:65%;
+        background:rgba(255,90,0,0.7);
+        z-index: 1001;
+    }
+    &.c {
+        top: 70%;
+        background:rgba(0,90,255,0.7);
+        z-index: 1002;
+    }
+}
+
+
+.debug.a:before {
+
+    @each $bp, $value in $grid-breakpoints {
+
+         @include media-breakpoint-only($bp) { content:"#{$bp} > #{map_get($grid-breakpoints, $bp)}"    }
+    }
+}
+
+.debug.b:before {
+
+    @each $bp, $value in $grid-breakpoints-fine-xs {
+
+         @include media-breakpoint-only($bp, $grid-breakpoints-fine-xs) { content:"#{$bp} > #{map_get($grid-breakpoints-fine-xs, $bp)}"    }
+    }
+
+
+}
+
+
+// .viewport-test {
+//     visibility: hidden;
+// }

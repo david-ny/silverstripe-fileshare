@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User has a valid snapshot 1`] = `
+<tr>
+  <td>
+    <input
+      type="checkbox"
+    />
+  </td>
+  <td
+    className="file"
+  >
+    <button
+      alt="John Doe"
+      className="filename"
+      onClick={[Function]}
+      title="John Doe"
+      type="button"
+    >
+      <img
+        alt="folder"
+        src="fileshare/client/dist/images/user.svg"
+      />
+      John
+       
+      Doe
+    </button>
+  </td>
+  <td />
+  <td />
+  <td>
+    john@test.com
+  </td>
+  <td />
+  <td>
+    <div
+      className="dropdown"
+      onKeyDown={[Function]}
+    >
+      <button
+        aria-expanded={false}
+        aria-haspopup={true}
+        className="file-menu-trigger dropdown-toggle btn btn-secondary"
+        onClick={[Function]}
+        type="button"
+      >
+        ...
+      </button>
+      <div
+        aria-hidden={true}
+        className="dropdown-menu"
+        role="menu"
+        tabIndex="-1"
+      >
+        <button
+          className="dropdown-item"
+          onClick={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          Edit
+        </button>
+        <button
+          className="dropdown-item"
+          onClick={[Function]}
+          tabIndex="0"
+          type="button"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </td>
+</tr>
+`;

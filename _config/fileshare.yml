@@ -1,0 +1,21 @@
+'SilverStripe\Security\Member':
+  api_access: 'GET,POST,PUT'
+  extensions:
+    - RESTfulAPI_TokenAuthExtension
+'SilverStripe\Assets\File':
+  extensions:
+    - FileShare_FileExtension
+'SilverStripe\Security\Member':
+  extensions:
+    - FileShare_MemberExtension
+RESTfulAPI:
+  dependencies:
+    authenticator: '%$RESTfulAPI_FileShareTokenAuthenticator'
+  # cors:
+  #   Enabled: true
+  #   Allow-Origin: '*'
+  #   Allow-Headers: '*'
+  #   Allow-Methods: 'OPTIONS, GET, POST, PUT, PATCH, DELETE'
+  #   Max-Age: 86400
+# FileSharePageController:
+#   fileshare_folder_name : 'fileshare'

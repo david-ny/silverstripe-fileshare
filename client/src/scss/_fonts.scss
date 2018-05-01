@@ -1,0 +1,12 @@
+// @import "font-awesome-4.3.0/scss/font-awesome";
+@import 'fonts/themify-icons/themify-icons';
+@import url('https://fonts.googleapis.com/css?family=Athiti:300,400&subset=latin-ext');
+
+$font_family_Athiti: 'Athiti', sans-serif;
+$font_family_Verdana_Geneva: Verdana, Geneva, sans-serif;
+
+// $main_font_family: $font_family_Verdana_Geneva;
+$main_font_family: $font_family_Athiti;
+
+
+$body_font_family: $main_font_family;
