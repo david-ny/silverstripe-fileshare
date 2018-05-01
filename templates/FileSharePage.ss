@@ -16,8 +16,6 @@
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
 
-	<%-- production --%>
-	<% require themedCSS('devcreative/fileshare:client/dist/styles/style') %>
 	<%-- dev --%>
 	<%-- <link rel="stylesheet" type="text/css" href="http://localhost:8099/styles/style.css" /> --%>
 
@@ -26,12 +24,7 @@
 </head>
 <body class="$ClassName<% if not $Menu(2) %> no-sidebar<% end_if %>" <% if $i18nScriptDirection %>dir="$i18nScriptDirection"<% end_if %>>
 
-
 		$Layout
-
-
-
-
 
 <div class="debug a"></div>
 <div class="debug b"></div>
@@ -43,9 +36,6 @@
 <div class="viewport-test device-lg d-none d-lg-block d-xl-none"></div>
 <div class="viewport-test device-xl d-none d-xl-block"></div>
 
-<%-- <% require javascript('//code.jquery.com/jquery-1.7.2.min.js') %> --%>
-<%-- production --%>
-<% require themedJavascript('devcreative/fileshare:client/dist/bundle.js') %>
 <%-- dev --%>
 <%-- <script type="application/javascript" src="http://localhost:8097/bundle.js"></script> --%>
 </body>
