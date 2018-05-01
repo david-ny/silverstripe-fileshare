@@ -20,6 +20,7 @@ use FileShare\FileMember;
 use SilverStripe\Versioned\Versioned;
 use Ramsey\Uuid\Uuid;
 use Ramsey\Uuid\Exception\UnsatisfiedDependencyException;
+use SilverStripe\View\Requirements;
 // use SilverStripe\Assets\Storage\DBFile;
 
 class FileSharePageController extends ContentController
