@@ -14,7 +14,7 @@
     {
       "silverstripe/framework":"~4.0",
 	    "silverstripe/cms":"~4.0",
-      "devcreative/silverstripe-restfulapi"
+      "devcreative/silverstripe-restfulapi": "dev-master"
     },
     "replace": {"silverstripe/fileshare": "*"}
 }
