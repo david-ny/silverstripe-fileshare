@@ -1412,7 +1412,7 @@ class FileSharePageController extends ContentController
     }
 
     public function getClientConfig() {
-      $imagePath = FILESHARE_DIR . "/client/dist/images";
+      $imagePath = Director::absoluteBaseURL() . 'public/resources/vendor/devcreative/fileshare/client/dist/images';
       $defaultLogo = [
         "src" => $imagePath . '/fileshare_logo.png',
         "alt" => 'FileShare',
@@ -1427,8 +1427,8 @@ class FileSharePageController extends ContentController
         "app" => [
           "domain" => Director::absoluteBaseURL(),
           "appPath" => $this->URLSegment,
-          "resourcePath" => "/client/dist",
-          "imagePath" => FILESHARE_DIR . "/client/dist/images",
+          "resourcePath" => Director::absoluteBaseURL() . 'public/resources/vendor/devcreative/fileshare/client/dist',
+          "imagePath" => $imagePath,
           "logo" => $logo
         ],
         "files" => [
