@@ -1,11 +1,4 @@
 <!DOCTYPE html>
-<!--
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-Simple. by Sara (saratusar.com, @saratusar) for Innovatif - an awesome Slovenia-based digital agency (innovatif.com/en)
-Change it, enhance it and most importantly enjoy it!
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
--->
-
 <!--[if !IE]><!-->
 <html lang="$ContentLocale">
 <!--<![endif]-->
@@ -24,10 +17,9 @@ Change it, enhance it and most importantly enjoy it!
 	<![endif]-->
 
 	<%-- production --%>
-	<% require themedCSS('client/dist/styles/style') %>
+	<% require themedCSS('devcreative/fileshare:client/dist/styles/style') %>
 	<%-- dev --%>
 	<%-- <link rel="stylesheet" type="text/css" href="http://localhost:8099/styles/style.css" /> --%>
-	<%-- <link rel="stylesheet" type="text/css" href="http://localhost:8097/style.css" /> --%>
 
 
 	<link rel="shortcut icon" href="themes/simple/images/favicon.ico" />
@@ -45,12 +37,6 @@ Change it, enhance it and most importantly enjoy it!
 <div class="debug b"></div>
 <div class="debug c"></div>
 
-<%-- <div class="viewport-test device-xs                hidden-sm-up"></div>
-<div class="viewport-test device-sm hidden-xs-down hidden-md-up"></div>
-<div class="viewport-test device-md hidden-sm-down hidden-lg-up"></div>
-<div class="viewport-test device-lg hidden-md-down hidden-xl-up"></div>
-<div class="viewport-test device-xl hidden-lg-down             "></div> --%>
-
 <div class="viewport-test device-xs d-xs-block d-sm-none"></div>
 <div class="viewport-test device-sm d-none d-sm-block d-md-none"></div>
 <div class="viewport-test device-md d-none d-md-block d-lg-none"></div>
@@ -59,7 +45,7 @@ Change it, enhance it and most importantly enjoy it!
 
 <%-- <% require javascript('//code.jquery.com/jquery-1.7.2.min.js') %> --%>
 <%-- production --%>
-<% require themedJavascript('client/dist/bundle.js') %>
+<% require themedJavascript('devcreative/fileshare:client/dist/bundle.js') %>
 <%-- dev --%>
 <%-- <script type="application/javascript" src="http://localhost:8097/bundle.js"></script> --%>
 </body>
