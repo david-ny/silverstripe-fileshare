@@ -72,7 +72,7 @@ composer require "devcreative/fileshare"
 
 
 ## Usage
-*   don't forget to dev/businessesld and flush
+*   don't forget to dev/build and flush
 *   optional: edit the config file: fileshare.yml  
 to modify the default fileshare_folder_name. ('fileshare')
 *   create a new FileSharePage.
