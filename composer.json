@@ -12,6 +12,7 @@
     ],
     "require":
     {
+      "silverstripe/vendor-plugin": "^1.0",
       "silverstripe/framework":"~4.0",
 	    "silverstripe/cms":"~4.0",
       "devcreative/silverstripe-restfulapi": "dev-master"
