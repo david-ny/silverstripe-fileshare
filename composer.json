@@ -16,5 +16,11 @@
 	    "silverstripe/cms":"~4.0",
       "devcreative/silverstripe-restfulapi": "dev-master"
     },
+    "extra": {
+        "expose": [
+            "client/dist",
+            "client/lang"
+        ]
+    },	
     "replace": {"silverstripe/fileshare": "*"}
 }
