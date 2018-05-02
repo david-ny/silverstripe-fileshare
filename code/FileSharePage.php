@@ -60,9 +60,9 @@ class FileSharePage extends Page
         $folder->CanEditType = 'OnlyTheseUsers';
         $folder->ViewerGroups()->add(Group::get()->filter(['Code' => 'administrators'])->first());
         $folder->EditorGroups()->add(Group::get()->filter(['Code' => 'administrators'])->first());
-        if (Member::currentUser()->inGroup('administrators')) {
-          $folder->OwnerID = Member::currentUser()->ID;
-        }
+        // if (Member::currentUser()->inGroup('administrators')) {
+        //   $folder->OwnerID = Member::currentUser()->ID;
+        // }
         $folder->write();
       }
     }
